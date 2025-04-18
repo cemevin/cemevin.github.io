@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Game Dev Portfolio Videos</title>
   <style>
     body {
@@ -128,6 +131,11 @@ Trigger volumes, interactable objects, physics, timeline animations, custom char
 
   </div>
 </div>
-
+<script>
+  document.querySelectorAll("iframe").forEach(iframe => {
+    let src = iframe.getAttribute("src");
+    iframe.setAttribute("src", src + (src.includes("?") ? "&" : "?") + "t=" + Date.now());
+  });
+</script>
 </body>
 </html>
