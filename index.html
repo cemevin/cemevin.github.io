@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <title>Cem Evin - Porfolio</title>
   <style>
@@ -13,7 +13,8 @@
       font-family: Arial, sans-serif;
       background: #f9f9f9;
       margin: 0;
-      padding-bottom: 100px;
+      padding-bottom: 0;
+      justify-content: space-between;
     }
 
     header {
@@ -77,17 +78,16 @@
     }
 
     footer {
-      position: fixed;       /* Fix footer at the bottom */
-      bottom: 0;             /* Position it at the bottom of the page */
-      left: 0;
-      width: 100%;           /* Make the footer span the full width */
       background-color: #ffffff;
       padding: 15px 20px;
       display: flex;
       justify-content: center;
       gap: 20px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
       z-index: 1000;
+      margin-top: auto;
     }
 
     footer button {
