@@ -6,13 +6,44 @@
   <meta http-equiv="Cache-Control" content="no-store" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Game Dev Portfolio Videos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <title>Cem Evin - Porfolio</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f9f9f9;
       margin: 0;
-      padding: 0;
+      padding-bottom: 100px;
+    }
+
+    footer {
+      position: fixed;       /* Fix footer at the bottom */
+      bottom: 0;             /* Position it at the bottom of the page */
+      left: 0;
+      width: 100%;           /* Make the footer span the full width */
+      background-color: #ffffff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    footer button {
+      background: none;
+      border: none;
+      color: #333;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    footer button:hover {
+      background-color: #eee;
+      color: #000;
     }
 
     header {
@@ -139,11 +170,74 @@
       opacity: 1;
     }
 
-    #cv-pdf {
-      width: 100%;
-      height: calc(100vh - 150px); /* Adjust 150px based on your header height */
-      border: none;
-      border-radius: 8px;
+    .cv-section {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fafafa;
+    }
+
+    .cv-section h1 {
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .cv-section .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cv-section .contact-info {
+      margin-bottom: 2rem;
+    }
+
+    .cv-section .contact-info a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .cv-section .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .cv-section .section {
+      margin-bottom: 2rem;
+    }
+
+    .cv-section .section h2 {
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.25rem;
+      font-size: 1.2rem;
+      color: #444;
+    }
+
+    .cv-section ul {
+      padding-left: 1.2rem;
+    }
+
+    .cv-section li {
+      margin-bottom: 1.5rem;
+    }
+
+    .cv-section strong {
+      color: #111;
+    }
+
+    .cv-section br {
+      line-height: 2;
+    }
+
+    .icon-link {
+      color: #0077cc; /* Icon color */
+      margin: 0 10px; /* Space between icons */
+      text-decoration: none; /* Remove underline */
+    }
+
+    .icon-link:hover {
+      color: #005fa3; /* Icon color on hover */
     }
   </style>
 </head>
@@ -251,7 +345,7 @@ Used technologies: C++ for engines, Lua for scripting</div>
     <div id="misc" class="section grid">
       <div class="video-card">
         <h2>Boogiz Dance App</h2>
-        <img src="boogiz.png" alt="Boogiz App" style="width:500px; max-height:300px; object-fit:cover; border-radius: 8px; margin: 10px 0;">
+        <img src="boogiz.png" alt="Boogiz App" style="width:100%; object-fit:cover; border-radius: 8px; margin: 10px 0;">
         <ul>
           <li>I developed a dance accuracy computer vision algorithm that compares user submitted video versus an expert dancer video for the app Boogiz.</li>
           <li>I used Python and Google's mediapipe library alongside OpenCV to process videos and extract poses.</li>
@@ -274,9 +368,85 @@ Used technologies: C++ for engines, Lua for scripting</div>
     </div>
 
     <div id="cv" class="cv-section">
-      <iframe id="cv-pdf" src="cv.pdf" width="100%" height="600px" frameborder="0"></iframe>
+      <!-- <iframe id="cv-pdf" src="cv.pdf" width="100%" height="600px" frameborder="0"></iframe> -->
+      <h2>Skills</h2>
+      <ul>
+        ● <strong>Game engines:</strong> Unreal Engine, Unity<br>
+        ● <strong>Languages:</strong> C++, Python, C#, Lua<br>
+        ● <strong>Other software development interests:</strong> Machine learning, web/mobile development<br>
+      </ul>
+      <h2>Experience</h2>
+      <ul>
+        <li>
+          <strong>Uvula LLC - Game Developer</strong><br>
+          December 2022 – Present<br>
+          ● Working as a gameplay/AI programmer for *To a T*, the upcoming title of Uvula LLC.<br>
+          ● Developed in Unreal Engine 5.<br>
+          ● Main work areas: AI of companions and NPCs in game. Player movement modes. Navigation. Audio.<br>
+          ● Contributed to all major gameplay systems: player controls, AI, audio (with Wwise), UI, and core logic.<br>
+          ● Worked on upgrading the project to Unreal 5.
+        </li>
+        <li>
+          <strong>The Multiplayer Group, UK - Software Engineer</strong><br>
+          March 2021 – November 2022<br>
+          ● Worked on AAA multiplayer titles with 1M+ players.<br>
+          ● Worked on custom Unreal Engine systems solutions reducing network bandwidth.<br>
+          ● Gameplay programming for combat and movement.<br>
+          ● Developed animation analysis tools.<br>
+          ● Ported a large-scale Unreal 4 project to Unreal 5.
+        </li>
+        <li>
+          <strong>Living Phoenix Entertainment (Now called Tavernlight Games), Remote - Game Developer</strong><br>
+          August 2018 – March 2021<br>
+          ● Worked on MMO games with thousands of players (Archlight online, Ravendawn online).<br>
+          ● Used a custom engine (C++/Lua).<br>
+          ● Full-stack gameplay and UI development (client and server).
+        </li>
+        <li>
+          <strong>Freelance Software Developer</strong><br>
+          June 2014 – September 2018<br>
+          ● Mobile app for lawyers in Turkey (used by 10,000+ lawyers).<br>
+          ● Created *Musicographics*, a Unity-based graphical music composition app featured in exhibitions and courses.<br>
+          ● Other projects: hypercasual games, mobile game level editor, and various mobile apps.
+        </li>
+      </ul>
+      <h2>Education</h2>
+      <ul>
+        <li>
+          <strong>METU, Ankara, Turkey – BSc in Computer Engineering</strong><br>
+          September 2008 – June 2012<br>
+          Graduated with honors, GPA: 3.53/4.00
+        </li>
+        <li>
+          <strong>BOUN, Istanbul, Turkey – MSc in Computer Engineering (Dropout)</strong><br>
+          September 2012 – June 2014
+        </li>
+        <li>
+          <strong>Prins Claus Conservatoire, Groningen, NL – BA in Jazz Guitar</strong><br>
+          September 2015 – June 2019<br>
+          Graduated *cum laude*
+        </li>
+      </ul>
     </div>
   </div>
+
+  <footer>
+    <p style="margin-top: 25px">© 2025 Erdoğan Cem Evin</p>
+    <p>
+        <a href="mailto:cemevin@gmail.com" class="icon-link">
+          <i class="fas fa-envelope fa-2x"></i>
+        </a>
+        <a href="https://x.com/cemevin" target="_blank" class="icon-link">
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>  
+        <a href="https://linkedin.com/in/cemevin" target="_blank" class="icon-link">
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>  
+        <a href="https://github.com/cemevin" target="_blank" class="icon-link">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+      </p>
+  </footer>
 
   <script>
 
