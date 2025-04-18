@@ -521,6 +521,13 @@ Used technologies: C++ for engines, Lua for scripting</div>
   function navigateTo(sectionId) {
     history.pushState(null, '', `#${sectionId}`);
     showSection(sectionId);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'  // This will make the scroll smooth
+    });
+
+    toggleMenu();
   }
 
   function toggleMenu() {
