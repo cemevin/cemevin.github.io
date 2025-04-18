@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Video Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+    }
+
+    .video-card iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .video-title {
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+
+    .video-description {
+      color: #555;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Favorite YouTube Videos</h1>
+
+  <div class="grid">
+
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+      <div class="video-title">Never Gonna Give You Up</div>
+      <div class="video-description">Rick Astley's timeless hit. Classic!</div>
+    </div>
+
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+      <div class="video-title">Peppa Pig Theme Song</div>
+      <div class="video-description">Because why not?</div>
+    </div>
+
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/oHg5SJYRHA0" allowfullscreen></iframe>
+      <div class="video-title">Another Rickroll</div>
+      <div class="video-description">You didn’t see this one coming.</div>
+    </div>
+
+    <!-- Add more videos below by copying this block -->
+    <!--
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+      <div class="video-title">Your Title Here</div>
+      <div class="video-description">Your description here.</div>
+    </div>
+    -->
+
+  </div>
+
+</body>
+</html>
