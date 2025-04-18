@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Game Dev Portfolio Videos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header button {
+      background: none;
+      border: none;
+      color: #333;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header button:hover {
+      background-color: #eee;
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+      transition: opacity 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      transition: transform 0.3s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .video-card iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .video-title {
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+
+    .video-description {
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .section.active {
+      display: grid;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button onclick="navigateTo('work')">Work Projects</button>
+    <button onclick="navigateTo('personal')">Personal Projects</button>
+    <button onclick="navigateTo('misc')">Misc</button>
+  </header>
+
+  <h1 id="section-title">Work Projects</h1>
+
+  <div class="container">
+    <!-- Grid container sections, content filled via JS -->
+    <div id="work" class="section grid active"></div>
+    <div id="personal" class="section grid"></div>
+    <div id="misc" class="section grid"></div>
+  </div>
+
+  <script>
+    
+  let videoData = {};
+
+  function renderVideos(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.innerHTML = ''; // Clear existing
+
+    if (!videoData[sectionId]) return;
+
+    videoData[sectionId].forEach(video => {
+      const card = document.createElement('div');
+      card.className = 'video-card';
+      const timestamp = Date.now(); // bust cache
+      card.innerHTML = `
+        <iframe src="https://www.youtube.com/embed/${video.id}?t=${timestamp}" allowfullscreen></iframe>
+        <div class="video-title">${video.title}</div>
+        <div class="video-description">${video.description}</div>
+      `;
+      section.appendChild(card);
+    });
+  }
+
+  function navigateTo(sectionId) {
+    history.pushState(null, '', `#${sectionId}`);
+    showSection(sectionId);
+  }
+
+  function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(sec => {
+      sec.classList.remove('active');
+    });
+
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.classList.add('active');
+      const titleMap = {
+        work: "Work Projects",
+        personal: "Personal Projects",
+        misc: "Misc"
+      };
+      document.getElementById('section-title').textContent = titleMap[sectionId] || "Projects";
+      renderVideos(sectionId);
+    }
+  }
+
+  async function loadData() {
+    try {
+      const response = await fetch('videos.json');
+      videoData = await response.json();
+
+      const hash = location.hash.replace('#', '') || 'work';
+      showSection(hash);
+    } catch (err) {
+      console.error("Error loading videos.json", err);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', loadData);
+  window.addEventListener('hashchange', () => {
+    const hash = location.hash.replace('#', '') || 'work';
+    showSection(hash);
+  });
+</script>
+</body>
+</html>
