@@ -17,10 +17,21 @@
       margin-bottom: 40px;
     }
 
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 50px;
+      grid-template-columns: repeat(2, 1fr); /* Exactly 2 videos per row */
+      gap: 40px;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .video-card {
@@ -32,7 +43,7 @@
 
     .video-card iframe {
       width: 100%;
-      height: 180px;
+      height: 300px;
       border: none;
       border-radius: 4px;
     }
@@ -51,71 +62,72 @@
 <body>
 
   <h1>Game Dev Portfolio Videos</h1>
-
+<div class="container">
   <div class="grid">
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=y-cBWta8FCo" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/y-cBWta8FCo" allowfullscreen></iframe>
       <div class="video-title">2025 - FPS Platforming Mechanics Demo in Unreal Engine</div>
       <div class="video-description">Made in Unreal Engine 5, using procedural animation for ledge climb and pole swinging. Study in FPS platforming movements and physics.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=e0nY4YnpFBw" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/e0nY4YnpFBw" allowfullscreen></iframe>
       <div class="video-title">2024 - Cable Management Puzzle Game Prototype in Unreal Engine</div>
       <div class="video-description">FPS Puzzle Game prototype in Unreal Engine</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=s-XWvYSYXuo" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/s-XWvYSYXuo" allowfullscreen></iframe>
       <div class="video-title">2023 - Procedural Climb Animation in Unreal Engine</div>
       <div class="video-description">Climb mechanics using 1 idle hanging pose, fully procedural grip position calculation, control rig and ik solver. I calculate hand, feet and knee control positions in code and feed those values into control rig through the ABP, which are then feeded into a full body ik solver.
 A possible extention to this idea could be to have a climb blendspace and apply ik solver on top of it for precise target selection. This way we could implement smoother, more human-like looking animations.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=jukzrAxjutM" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/jukzrAxjutM" allowfullscreen></iframe>
       <div class="video-title">2023 - Climb Animation in Unreal Engine</div>
       <div class="video-description">Animation and line trace based climb mechanics. Implemented a custom ABP state machine and a custom movement mode for the movement component. Unfortunately due to limited free assets used, the transitions don't look the best, but the main idea is to showcase the position/state calculations.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=eif1sZSjw6U" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/eif1sZSjw6U" allowfullscreen></iframe>
       <div class="video-title">2022 - Monument Valley Demo in Unreal Engine</div>
       <div class="video-description">Monument Valley inspired "impossible geometry" demo on Unreal Engine 5. Most of it is done in C++, except for animations for the turning cubes, triggers lowering/raising and camera movement, and some minor things  (some events, UI) handled in Blueprint.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=40XpNVJyPDc" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/40XpNVJyPDc" allowfullscreen></iframe>
       <div class="video-title">2021 - Unreal Engine Gameplay Demo</div>
       <div class="video-description">This video is meant to showcase some gameplay elements implemented in UE4. Features included:
 Trigger volumes, interactable objects, physics, timeline animations, custom character animations, multiple camera angles (first-third person, aim camera), decals/bullet marks, pickupable objects, weapon/combat animations/effects, AI behaviour, teleport/blink mechanics, etc.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=N8fZLOPIOT0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/N8fZLOPIOT0" allowfullscreen></iframe>
       <div class="video-title">2021 - Unreal Engine Escape Room Demo</div>
       <div class="video-description">A small escape room demo made in Unreal Engine 4.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=8f36OJDR338" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/8f36OJDR338" allowfullscreen></iframe>
       <div class="video-title">2020 - Katamari Physics Demo in Unity</div>
       <div class="video-description">A physics based Katamari Damacy-like gameplay demo made in Unity. Supports a few hundred physics objects being spawned; rolling on them 'sucks' them into the player avatar (a sphere). Player also has two abilities they can use (creating a tornado or being super magnetic for a short duration). Minor optimizations have been implemented to improve performance a bit.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=rOuQl8JQz2Y" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/rOuQl8JQz2Y" allowfullscreen></iframe>
       <div class="video-title">2020 - Enemy AI Demo in Unity</div>
       <div class="video-description">An AI demo made in Unity, using vanilla C# (no behaviour trees or add-ons). Uses Unity's NavMesh agents. Implemented sight/hearing sensors, path finding/guessing and 'calling allies' logic by myself. The agents keep track of player movement, and if they lose sight of the player, they try to guess where the player might have gone, using a simple extrapolation of past data. If they have a friendly agent nearby, they call them to come over.</div>
     </div>
 
     <div class="video-card">
-      <iframe src="https://www.youtube.com/watch?v=FzibEo7GDBs" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/FzibEo7GDBs" allowfullscreen></iframe>
       <div class="video-title">2020 - Cute Souls - Action RPG Demo in Unity</div>
       <div class="video-description">A third person action RPG demo made in Unity. Supports player health/stamina, a weapon and a projectile spell. Different enemy types with different health/attack speed/damage and attack type (projectile, melee). Supports very basic AI with NavMesh path finding.</div>
     </div>
 
   </div>
+</div>
 
 </body>
 </html>
