@@ -1,712 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <title>Cem Evin - Porfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>Erdogan Cem Evin - Portfolio</title>
   <style>
-    #theme-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 1100;
-      background-color: #fff;
-      border: none;
-      border-radius: 50%;
-      padding: 12px;
-      font-size: 1.2em;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-    }
+body { font-family: Arial, sans-serif; margin: 0; background: #f9f9f9; }
 
-    #theme-toggle:hover {
-      transform: scale(1.1);
-    }
 
-    body.dark #theme-toggle {
-      background-color: #333;
-      color: #fff;
-    }
+header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; justify-content: center; gap: 20px; padding: 15px; }
 
-    /* DARK MODE OVERRIDES */
-    body.dark {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
 
-    @media (max-width: 700px) {
-      body.dark #nav-links {
-        background-color: #222;
-        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-      }
+header button { background: none; border: none; cursor: pointer; font-size: 1em; padding: 10px 20px; border-radius: 5px; transition: background 0.3s; }
+header button:hover { background: #eee; }
 
-      body.dark #nav-links button {
-        color: #eee;
-      }
 
-      body.dark #nav-links button:hover {
-        background-color: #333;
-        color: #fff;
-      }
-    }
+h1 { text-align: center; margin-top: 30px; }
 
-    body.dark header,
-    body.dark footer {
-      background-color: #1f1f1f;
-      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-    }
 
-    body.dark header button,
-    body.dark footer button {
-      color: #ccc;
-    }
+#content { max-width: 1200px; margin: auto; padding: 30px; }
 
-    body.dark header button:hover,
-    body.dark footer button:hover {
-      background-color: #333;
-      color: #fff;
-    }
 
-    body.dark .video-card {
-      background: #1e1e1e;
-      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
-    }
+/* GRID SUPPORT */
+.grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 40px;
+}
 
-    body.dark .video-description {
-      color: #aaa;
-    }
 
-    body.dark .cv-section {
-      background-color: #181818;
-      color: #e0e0e0;
-    }
+@media (max-width: 700px) {
+.grid { grid-template-columns: 1fr; }
+}
 
-    body.dark .cv-section .section h2 {
-      border-color: #555;
-      color: #ccc;
-    }
 
-    body.dark strong {
-      color: #ccc; /* Example: amber-400 */
-    }
+/* VIDEO CARD STYLING */
+.video-card {
+background: white;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+padding: 10px;
+transition: transform 0.3s;
+}
 
-    body.dark .icon-link {
-      color: #4ea1ff;
-    }
 
-    body.dark .icon-link:hover {
-      color: #82c7ff;
-    }
+.video-card:hover { transform: translateY(-3px); }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding-bottom: 0;
-      justify-content: space-between;
-    }
 
-    header {
-      background-color: #ffffff;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+.video-card iframe {
+width: 100%;
+height: 300px;
+border: none;
+border-radius: 4px;
+}
 
-    header button {
-      background: none;
-      border: none;
-      color: #333;
-      padding: 10px 20px;
-      font-size: 1em;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-    }
 
-    header button:hover {
-      background-color: #eee;
-      color: #000;
-    }
+.video-title { font-weight: bold; margin: 10px 0 5px; }
+.video-description { color: #555; font-size: 0.9em; }
 
-    .hamburger-menu {
-      display: none; /* Hidden by default */
-      font-size: 30px;
-      cursor: pointer;
-    }
 
-    /* For small screens, show the hamburger menu */
-    @media (max-width: 700px) {
-      .hamburger-menu {
-        display: block; /* Show hamburger on small screens */
-      }
-
-      #nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      #nav-links button {
-        padding: 10px 20px;
-        text-align: left;
-      }
-
-      #nav-links.visible {
-        display: flex;
-      }
-    }
-
-    footer {
-      background-color: #ffffff;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      margin-top: auto;
-    }
-
-    footer button {
-      background: none;
-      border: none;
-      color: #333;
-      padding: 10px 20px;
-      font-size: 1em;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    footer button:hover {
-      background-color: #eee;
-      color: #000;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 10px 0;
-    }
-
-    .icon-link {
-      color: #333;
-      text-decoration: none;
-    }
-
-    .social-icons i {
-      font-size: 1.5em; /* Default size for icons */
-    }
-
-    /* Media query for mobile */
-    @media (max-width: 700px) {
-      .social-icons {
-        gap: 0px; /* Reduce gap between icons */
-      }
-
-      .social-icons i {
-        font-size: 1.5em; /* Smaller icon size for mobile */
-      }
-    }
-
-    h1 {
-      text-align: center;
-      margin: 30px 0;
-      transition: opacity 0.3s;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-
-    @media (max-width: 700px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .video-card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      transition: transform 0.3s;
-    }
-
-    .video-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .video-card iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 4px;
-    }
-
-    .video-title {
-      font-weight: bold;
-      margin: 10px 0 5px;
-    }
-
-    .video-description {
-      color: #555;
-      font-size: 0.9em;
-    }
-
-    .section {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .section.active {
-      display: grid;
-      opacity: 1;
-    }
-
-    .cv-section {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fafafa;
-    }
-
-    .cv-section h1 {
-      font-size: 2rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .cv-section .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .cv-section .contact-info {
-      margin-bottom: 2rem;
-    }
-
-    .cv-section .contact-info a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-
-    .cv-section .contact-info a:hover {
-      text-decoration: underline;
-    }
-
-    .cv-section .section {
-      margin-bottom: 2rem;
-    }
-
-    .cv-section .section h2 {
-      margin-bottom: 0.5rem;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.25rem;
-      font-size: 1.2rem;
-      color: #444;
-    }
-
-    .cv-section ul {
-      padding-left: 1.2rem;
-    }
-
-    .cv-section li {
-      margin-bottom: 1.5rem;
-    }
-
-    .cv-section strong {
-      color: #111;
-    }
-
-    .cv-section br {
-      line-height: 2;
-    }
-
-    .icon-link {
-      color: #0077cc; /* Icon color */
-      margin: 0 10px; /* Space between icons */
-      text-decoration: none; /* Remove underline */
-    }
-
-    .icon-link:hover {
-      color: #005fa3; /* Icon color on hover */
-    }
-  </style>
+.video-card p a { color: #0077cc; text-decoration: none; }
+.video-card p a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
   <header>
-    <div class="hamburger-menu" onclick="toggleMenu()">
-     &#9776; <!-- Hamburger icon -->
-    </div>
-      <nav id="nav-links" class="hidden">
-      <button onclick="navigateTo('work')">Work Experience</button>
-      <button onclick="navigateTo('personal')">Personal Game Dev</button>
-      <button onclick="navigateTo('misc')">Misc.</button>
-      <button onclick="navigateTo('cv')">CV</button>
-    </nav>
+    <button onclick="navigateTo('bio')">Bio</button>
+    <button onclick="navigateTo('work')">Work Experience</button>
+    <button onclick="navigateTo('personal')">Personal Game Dev</button>
+    <button onclick="navigateTo('misc')">Misc.</button>
   </header>
 
-  <h1 id="section-title">Work Experience</h1>
-
-  <div class="container">
-    <!-- Grid container sections, content filled via JS -->
-    <div id="work" class="section grid">
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/NriGokaU0xE" allowfullscreen=""></iframe>
-        <div class="video-title">2022 - 2025: To a T</div>
-        <div class="video-description">Working as a gameplay/AI programmer for the game To a T. This game is being developed using Unreal Engine. As we are a small team, I've been working on most aspects of the game; player controls, AI, audio (using Wwise, together with audio designers), gameplay/gameflow logic, UI, and so on.</div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/90FNVadJP6s" allowfullscreen=""></iframe>
-        <div class="video-title">2021 - 2022: Multiplayer Group</div>
-        <div class="video-description">Worked as a software engineer in Multiplayer Group which is a co-development stuio. Worked on some AAA games, mostly on networking/multiplayer gameplay. One of the projects I took part was Everywhere, where our team worked on the multiplayer gameplay/replication systems of the project.</div>
-      </div>
-      
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/1feOYqJ2BP8" allowfullscreen=""></iframe>
-        <div class="video-title">2018 - 2021: Ravendawn Online</div>
-        <div class="video-description">Worked as a developer for the MMO game Ravendawn Online. Developer roles include frontend and backend development, including UI and client programming, server programming, etc. The game uses its own customized client and server engine.
-Website: https://ravendawn.online/
-Used technologies: C++ for engines, Lua for scripting</div>
-        <p><strong>Link:</strong><a href = "https://ravendawn.online/">https://ravendawn.online/</a></p><br>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/Tb26g9YtRBo" allowfullscreen=""></iframe>
-        <div class="video-title">2018 - 2021: Archlight Online</div>
-        <div class="video-description">Worked as a developer for the MMO game Archlight Online. Developer roles include frontend and backend development, including UI and client programming, server programming, etc. The game uses its own customized client and server engine.
-Website: https://archlightonline.com/
-Used technologies: C++ for engines, Lua for scripting</div>
-        <p><strong>Link:</strong><a href = "https://archlightonline.com/">https://archlightonline.com/</a></p><br>
-      </div>
-      
-      
-
-    </div>
-    <div id="personal" class="section grid">
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/jyGqIg1kZfM?si=-4lAekonLLtYTwCR" allowfullscreen=""></iframe>
-        <div class="video-title">2025 - Player Controls Coding Showcase in Unreal Engine</div>
-        <div class="video-description">Coding showcase for third person player controls in Unreal Engine 5. <a href="https://github.com/cemevin/unreal5-character-test" style="color: white">Link to GitHub</a></div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/y-cBWta8FCo?t=1745001248720" allowfullscreen=""></iframe>
-        <div class="video-title">2025 - FPS Platforming Mechanics Demo in Unreal Engine</div>
-        <div class="video-description">Made in Unreal Engine 5, using procedural animation for ledge climb and pole swinging. Study in FPS platforming movements and physics.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/e0nY4YnpFBw?t=1745001248721" allowfullscreen=""></iframe>
-        <div class="video-title">2024 - Cable Management Puzzle Game Prototype in Unreal Engine</div>
-        <div class="video-description">FPS Puzzle Game prototype in Unreal Engine</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/s-XWvYSYXuo?t=1745001248721" allowfullscreen=""></iframe>
-        <div class="video-title">2023 - Procedural Climb Animation in Unreal Engine</div>
-        <div class="video-description">Climb mechanics using 1 idle hanging pose, fully procedural grip position calculation, control rig and ik solver. I calculate hand, feet and knee control positions in code and feed those values into control rig through the ABP, which are then fed into a full body ik solver.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/jukzrAxjutM?t=1745001248722" allowfullscreen=""></iframe>
-        <div class="video-title">2023 - Climb Animation in Unreal Engine</div>
-        <div class="video-description">Animation and line trace based climb mechanics. Implemented a custom ABP state machine and a custom movement mode for the movement component.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/eif1sZSjw6U?t=1745001248722" allowfullscreen=""></iframe>
-        <div class="video-title">2022 - Monument Valley Demo in Unreal Engine</div>
-        <div class="video-description">Monument Valley inspired 'impossible geometry' demo on Unreal Engine 5. Most of it is done in C++, except for animations for the turning cubes, triggers lowering/raising and camera movement.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/40XpNVJyPDc?t=1745001248723" allowfullscreen=""></iframe>
-        <div class="video-title">2021 - Unreal Engine Gameplay Demo</div>
-        <div class="video-description">Showcases gameplay elements implemented in UE4. Features include trigger volumes, interactable objects, physics, custom character animations, and more.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/N8fZLOPIOT0?t=1745001248723" allowfullscreen=""></iframe>
-        <div class="video-title">2021 - Unreal Engine Escape Room Demo</div>
-        <div class="video-description">A small escape room demo made in Unreal Engine 4.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/8f36OJDR338?t=1745001248724" allowfullscreen=""></iframe>
-        <div class="video-title">2020 - Katamari Physics Demo in Unity</div>
-        <div class="video-description">A physics based Katamari Damacy-like gameplay demo made in Unity. Supports a few hundred physics objects and features player abilities like creating a tornado or being super magnetic.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/rOuQl8JQz2Y?t=1745001248724" allowfullscreen=""></iframe>
-        <div class="video-title">2020 - Enemy AI Demo in Unity</div>
-        <div class="video-description">An AI demo made in Unity, using vanilla C#. It implements sight/hearing sensors, pathfinding, and ally communication for enemy agents.</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/FzibEo7GDBs?t=1745001248725" allowfullscreen=""></iframe>
-        <div class="video-title">2020 - Cute Souls - Action RPG Demo in Unity</div>
-        <div class="video-description">A third-person action RPG demo made in Unity. Supports player health, stamina, a weapon, and projectile spell. Includes different enemy types with AI pathfinding.</div>
-      </div></div>
-    <div id="misc" class="section grid">
-      <div class="video-card">
-        <img src="boogiz.png" alt="Boogiz App" style="width:100%; object-fit:cover; border-radius: 8px; margin: 10px 0;">
-        <div class="video-title">Boogiz Dance App</div>
-        <div class="video-description">
-        <ul>
-          <li>I developed a dance accuracy computer vision algorithm that compares user submitted video versus an expert dancer video for the app Boogiz.</li>
-          <li>I used Python and Google's mediapipe library alongside OpenCV to process videos and extract poses.</li>
-          <li>I developed an algorithm that tries to accurately compare amateur video with expert video and give a user score.</li>
-        </ul>
-      </div>
-        <p><strong>Link:</strong><a href = "https://apps.apple.com/dk/app/boogiz/id1590304859">Boogiz Dance App on App Store</a></p><br>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/aUllx5yC_AE" allowfullscreen=""></iframe>
-        <div class="video-title">2021: Musicographics</div>
-        <div class="video-description">Musicographics is a graphical music composition tool that was developed together with a musician and architect Ali Murat Cengiz. It's fully written in Unity. It supports loading audio samples, laying out 2D maps and orchestrating it with different instruments, and saving your compositions. The end result is a musical experience that might also resemble underground map of a city.</div>
-      </div>
-
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/4ZpUbbaZjK8" allowfullscreen=""></iframe>
-        <div class="video-title">2018: Turkish Music To Jazz</div>
-        <div class="video-description">Worked on the development of the Turkish Language to Jazz Music project for one of the biggest banks in Turkey, Akbank. What this project achieves is that it takes a text in Turkish language as input. The text is analyzed linguistically and turned into a rhythmical structure, which in turn is turned into randomly generated jazz tune using some configurable parameters and rules. My role: Development of the language parsing and music generation methods. Used technologies: JS/Node.js, midi generation plugins & samples</div>
-      </div>
-    </div>
-
-    <div id="cv" class="cv-section">
-      <!-- <iframe id="cv-pdf" src="cv.pdf" width="100%" height="600px" frameborder="0"></iframe> -->
-      <h2>Skills</h2>
-      <ul>
-        ● <strong>Game engines:</strong> Unreal Engine, Unity<br>
-        ● <strong>Languages:</strong> C++, Python, C#, Lua<br>
-        ● <strong>Other software development interests:</strong> Machine learning, web/mobile development<br>
-      </ul>
-      <h2>Experience</h2>
-      <ul>
-        <li>
-          <strong>Uvula LLC - Game Developer</strong><br>
-          December 2022 – July 2025<br>
-          ● Worked as a gameplay/AI programmer for *To a T*.<br>
-          ● Developed in Unreal Engine 5.<br>
-          ● Main work areas: AI of companions and NPCs in game. Player movement modes. Navigation. Audio.<br>
-          ● Contributed to all major gameplay systems: player controls, AI, audio (with Wwise), UI, and core logic.<br>
-          ● Worked on upgrading the project to Unreal 5.
-        </li>
-        <li>
-          <strong>The Multiplayer Group, UK - Software Engineer</strong><br>
-          March 2021 – November 2022<br>
-          ● Worked on AAA multiplayer titles with 1M+ players.<br>
-          ● Worked on custom Unreal Engine systems solutions reducing network bandwidth.<br>
-          ● Gameplay programming for combat and movement.<br>
-          ● Developed animation analysis tools.<br>
-          ● Ported a large-scale Unreal 4 project to Unreal 5.
-        </li>
-        <li>
-          <strong>Living Phoenix Entertainment (Now called Tavernlight Games), Remote - Game Developer</strong><br>
-          August 2018 – March 2021<br>
-          ● Worked on MMO games with thousands of players (Archlight online, Ravendawn online).<br>
-          ● Used a custom engine (C++/Lua).<br>
-          ● Full-stack gameplay and UI development (client and server).
-        </li>
-        <li>
-          <strong>Freelance Software Developer</strong><br>
-          June 2014 – Present <br>
-          ● Boogiz dance app, an app for analyzing and scoring user submitted dance videos. <br>
-          ● (Self published) MobilUDF, A mobile app for lawyers in Turkey to digitally edit and sign their legal documents.<br>
-          ● Created *Musicographics*, a Unity-based graphical music composition app featured in exhibitions and courses.<br>
-          ● Other projects: hypercasual games, mobile game level editor, and various mobile apps.
-        </li>
-      </ul>
-      <h2>Education</h2>
-      <ul>
-        <li>
-          <strong>METU, Ankara, Turkey – BSc in Computer Engineering</strong><br>
-          September 2008 – June 2012<br>
-          Graduated with honors, GPA: 3.53/4.00
-        </li>
-        <li>
-          <strong>BOUN, Istanbul, Turkey – MSc in Computer Engineering (Dropout)</strong><br>
-          September 2012 – June 2014
-        </li>
-        <li>
-          <strong>Prins Claus Conservatoire, Groningen, NL – BA in Jazz Guitar</strong><br>
-          September 2015 – June 2019<br>
-          Graduated *cum laude*
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <button id="theme-toggle" title="Toggle dark mode">🌙</button>
-
-  <footer>
-  <p style="margin: 13px 0;max-width: 50%">© 2025 Cem Evin</p>
-  <p class="social-icons">
-    <a href="mailto:cemevin@gmail.com" class="icon-link">
-      <i class="fas fa-envelope fa-2x"></i>
-    </a>
-    <a href="https://x.com/cemevin" target="_blank" class="icon-link">
-      <i class="fab fa-twitter fa-2x"></i>
-    </a>
-    <a href="https://linkedin.com/in/cemevin" target="_blank" class="icon-link">
-      <i class="fab fa-linkedin fa-2x"></i>
-    </a>
-    <a href="https://github.com/cemevin" target="_blank" class="icon-link">
-      <i class="fab fa-github fa-2x"></i>
-    </a>
-  </p>
-</footer>
+  <h1 id="section-title">Bio</h1>
+  <div id="content"></div>
 
   <script>
-
-  let videoData = {
-  
-  "work": [
-    {
-      "id": "NriGokaU0xE",
-      "title": "2022 - 2025: To a T",
-      "description": "Working as a gameplay/AI programmer for the game To a T. This game is being developed using Unreal Engine. As we are a small team, I've been working on most aspects of the game; player controls, AI, audio (using Wwise, together with audio designers), gameplay/gameflow logic, UI, and so on."
-    },
-    {
-      "id": "1feOYqJ2BP8",
-      "title": "2018 - 2021: Ravendawn Online",
-      "description": "Working as a developer for the upcoming MMO game Ravendawn Online. Developer roles include frontend and backend development, including UI and client programming, server programming, etc. The game uses its own customized client and server engine.\nWebsite: https://ravendawn.online/\nUsed technologies: C++ for engines, Lua for scripting"
-    },
-    {
-      "id": "Tb26g9YtRBo",
-      "title": "2018 - 2021: Archlight Online",
-      "description": "Working as a developer for the MMO game Archlight Online. Developer roles include frontend and backend development, including UI and client programming, server programming, etc. The game uses its own customized client and server engine.\nWebsite: https://archlightonline.com/\nUsed technologies: C++ for engines, Lua for scripting"
-    }
-  ],
-  "misc": []
-};
-
-  function renderVideos(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.innerHTML = ''; // Clear existing
-
-    if (!videoData[sectionId]) return;
-
-    videoData[sectionId].forEach(video => {
-      const card = document.createElement('div');
-      card.className = 'video-card';
-      const timestamp = Date.now(); // bust cache
-      card.innerHTML = `
-        <iframe src="https://www.youtube.com/embed/${video.id}?t=${timestamp}" allowfullscreen></iframe>
-        <div class="video-title">${video.title}</div>
-        <div class="video-description">${video.description}</div>
-      `;
-      section.appendChild(card);
-    });
-  }
-
-  function navigateTo(sectionId) {
-    history.pushState(null, '', `#${sectionId}`);
-    showSection(sectionId);
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'  // This will make the scroll smooth
-    });
-
-    toggleMenu();
-  }
-
-  function toggleMenu() {
-    const menu = document.getElementById('nav-links');
-    menu.classList.toggle('visible');
-  }
-
-  function showSection(sectionId) {
-    document.querySelectorAll('.section').forEach(sec => {
-      sec.classList.remove('active');
-    });
-
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.classList.add('active');
-      const titleMap = {
-        work: "Work Experience",
-        personal: "Personal Game Development Projects",
-        misc: "Misc Work Projects",
-        cv: "CV"
-      };
-      document.getElementById('section-title').textContent = titleMap[sectionId] || "Projects";
-      document.getElementById('misc').style.display = 'none';
-      document.getElementById('cv').style.display = 'none';
-      document.getElementById('work').style.display = 'none';
-      document.getElementById('personal').style.display = 'none';
-      
-      if (false && ["work", "personal"].includes(sectionId)) 
-      {
-        renderVideos(sectionId);
-        document.getElementById('misc').style.display = 'none';
-        document.getElementById('cv').style.display = 'none';
-      }
-      else
-      {
-        document.getElementById(sectionId).style.display = 'grid';
+    async function navigateTo(section) {
+      try {
+        const res = await fetch(`${section}.html`);
+        const html = await res.text();
+        document.getElementById('content').innerHTML = html;
+        document.getElementById('section-title').textContent = section.charAt(0).toUpperCase() + section.slice(1);
+        history.pushState(null, '', `#${section}`);
+      } catch {
+        document.getElementById('content').innerHTML = '<p>Section not found.</p>';
       }
     }
-  }
 
-  async function loadData() {
-    try {
-      /*const response = await fetch('videos.json');
-      videoData = await response.json();*/
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = location.hash.replace('#', '') || 'bio';
+      navigateTo(hash);
+    });
 
-      const hash = location.hash.replace('#', '') || 'work';
-      showSection(hash);
-    } catch (err) {
-      console.error("Error loading videos.json", err);
-    }
-  }
-
-  window.addEventListener('DOMContentLoaded', loadData);
-  window.addEventListener('hashchange', () => {
-    const hash = location.hash.replace('#', '') || 'work';
-    showSection(hash);
-  });
-</script>
-
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const savedTheme = localStorage.getItem('theme');
-
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    document.body.classList.add('dark');
-    toggleBtn.textContent = '☀️';
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
-    toggleBtn.textContent = isDark ? '☀️' : '🌙';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  });
-</script>
+    window.addEventListener('hashchange', () => {
+      const hash = location.hash.replace('#', '') || 'bio';
+      navigateTo(hash);
+    });
+  </script>
 </body>
 </html>
